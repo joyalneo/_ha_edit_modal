@@ -11,12 +11,19 @@ env.init();
 
 const __dirname = path.resolve();
 
+const port =
+  Number(
+    process.env.BLOX_ENV_URL_edit_modal.substr(
+      process.env.BLOX_ENV_URL_edit_modal.length - 4
+    )
+  ) || 3002;
+
 export default {
   entry: './src/index',
   mode: 'development',
   devServer: {
     static: path.join(__dirname, 'dist'),
-    port: 3003,
+    port: port,
   },
   externals: {
     env: JSON.stringify(process.env),
