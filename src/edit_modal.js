@@ -25,7 +25,7 @@ const EditModal = (props) => {
         preferredJobLocation: 'India',
       });
   }, [current]);
-  
+
   const onChange = (e) => {
     const { name, value } = e.target;
     let prevData = { ...data };
@@ -37,7 +37,7 @@ const EditModal = (props) => {
     try {
       if (current) {
         await Axios.post(
-          `https://hiringapp-dev-functions.appblox.io/updateCandidate`,
+          `${process.env.BLOX_FUNCTION_URL_DEV}/updateCandidate`,
           data,
           {
             headers: {
@@ -47,7 +47,7 @@ const EditModal = (props) => {
         );
       } else {
         await Axios.post(
-          `https://hiringapp-dev-functions.appblox.io/addCandidate`,
+          `${process.env.BLOX_FUNCTION_URL_DEV}/addCandidate`,
           data,
           {
             headers: {
